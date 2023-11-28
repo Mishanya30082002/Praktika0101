@@ -1,0 +1,30 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:PraktikaVanyushkin.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PraktikaVanyushkin.ListAppointments"
+        Title="ListAppointments">
+    <ListBox Name="List"
+             Margin="20">
+        <ListBox.ItemTemplate>
+            <DataTemplate x:DataType="models:Appoinment">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock 
+                        Margin="20"
+                        Text="{Binding DoctorInfo}"/>
+                    <TextBlock 
+                        Margin="20" 
+                        Text="{Binding IllnessRecordInfo}"/>
+                    <TextBlock  
+                        Margin="20" 
+                        Text="{Binding AppointmentDate}"/>
+                    <CheckBox  
+                        Checked="ToggleButton_OnChecked"                                          Content="Пришел?"
+                        IsChecked="{Binding Attendance}"/>
+                </StackPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</Window>

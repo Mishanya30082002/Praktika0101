@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="PraktikaVanyushkin/AddAppointments.axaml" value="PraktikaVanyushkin/PraktikaVanyushkin.csproj" />
+        <entry key="PraktikaVanyushkin/AddIllnessRecord.axaml" value="PraktikaVanyushkin/PraktikaVanyushkin.csproj" />
+        <entry key="PraktikaVanyushkin/ListAppointments.axaml" value="PraktikaVanyushkin/PraktikaVanyushkin.csproj" />
+        <entry key="PraktikaVanyushkin/MainWindow.axaml" value="PraktikaVanyushkin/PraktikaVanyushkin.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,103 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:PraktikaVanyushkin.Models"
+        mc:Ignorable="d" Width="900" Height="700"
+        x:Class="PraktikaVanyushkin.AddAppointments"
+        Title="AddAppointments">
+        <StackPanel
+                Orientation="Vertical"
+        >
+                <StackPanel 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Spacing="10">
+                        <TextBlock 
+                                Text="Выберите дату:"/>
+                        <DatePicker
+                                Name="Date"
+                                Margin="0,0,0,10"/>
+                        
+                        <TextBlock 
+                                Text="Выберите время:"/>
+                        <TimePicker
+                                Name="Time"
+                                Margin="0,0,0,10"/>
+                        
+                </StackPanel>
+                <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                        <TextBlock Text="Выберите доктора"/>
+                        <ComboBox 
+                                Name="CbDoctors"
+                                Margin="10,0,0,0">
+                                <ComboBox.DataTemplates>
+                                        <DataTemplate x:DataType="models:Employee">
+                                                <TextBlock Text="{Binding DisplayInfo}"/>
+                                        </DataTemplate>
+                                </ComboBox.DataTemplates>
+                        </ComboBox>
+                        <Button 
+                                Margin="40,0,0,0"
+                                Content="Сменить пользователя"
+                                HorizontalAlignment="Center"
+                                Click="LogOut"/>
+                </StackPanel>
+                <StackPanel 
+                        HorizontalAlignment="Center"
+                        Margin="0,40,0,0"
+                        Orientation="Horizontal">
+                        <TextBlock Text="Выберите запись о болезни"/>
+                        <ComboBox
+                                Margin="10,0,0,0"
+                                Name="CbIllnessRecord">
+                                <ComboBox.DataTemplates>
+                                        <DataTemplate x:DataType="models:Illness_record">
+                                                <TextBlock Text="{Binding DispleyInfo}"/>
+                                        </DataTemplate>
+                                </ComboBox.DataTemplates>
+                        </ComboBox>
+                </StackPanel>
+                <Border Margin="20"
+                        Width=""
+                        HorizontalAlignment="Left"
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        CornerRadius="3">
+                        <TextBlock Name="tbZarplata">Получено за приемы:</TextBlock>
+                </Border>
+                <Button 
+                        Margin="0,30,0,0"
+                        Content="Добавить запись"
+                        HorizontalAlignment="Center"
+                        Click="Insert"
+                        />
+                <TextBlock Margin="20">История записей:</TextBlock>
+                <ListBox Name="List"
+                         Margin="20"
+                         Height="300">
+                        <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="models:Appoinment">
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock 
+                                                        Margin="20"
+                                                        Text="{Binding DoctorInfo}"/>
+                                                <TextBlock 
+                                                        Margin="20" 
+                                                        Text="{Binding IllnessRecordInfo}"/>
+                                                <TextBlock  
+                                                        Margin="20" 
+                                                        Text="{Binding AppointmentDate}"/>
+                                                <CheckBox  
+                                                        Name ="CheckBox"
+                                                        IsEnabled = "False"                                           Content="Пришел?"
+                                                        IsChecked="{Binding Attendance}"/>
+                                        </StackPanel>
+                                </DataTemplate>
+                        </ListBox.ItemTemplate>
+                </ListBox>
+                
+        </StackPanel>
+</Window>

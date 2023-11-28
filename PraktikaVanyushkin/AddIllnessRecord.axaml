@@ -1,0 +1,93 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:PraktikaVanyushkin.Models"
+        mc:Ignorable="d" Width="900" Height="700"
+        x:Class="PraktikaVanyushkin.AddIllnessRecord"
+        Title="AddIllnessRecord">
+    <StackPanel
+        Orientation="Vertical"
+        >
+        <StackPanel 
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <TextBlock Text="Выберите мед карту"/>
+            <ComboBox 
+                Name="CbMedCard"
+                Margin="10,0,0,0">
+                <ComboBox.DataTemplates>
+                    <DataTemplate x:DataType="models:Medical_card">
+                        <TextBlock Text="{Binding PatientInfo}"/>
+                    </DataTemplate>
+                </ComboBox.DataTemplates>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel 
+            HorizontalAlignment="Center"
+            Margin="0,40,0,0"
+            Orientation="Horizontal">
+            <TextBlock Text="Выберите болезнь"/>
+            <ComboBox
+                Margin="10,0,0,0"
+                Name="CbDiseases">
+                <ComboBox.DataTemplates>
+                    <DataTemplate x:DataType="models:Diseases">
+                        <TextBlock Text="{Binding NameDiseases}"/>
+                    </DataTemplate>
+                </ComboBox.DataTemplates>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Spacing="10">
+            <TextBlock 
+                Text="Выберите дату поступления:"/>
+            <DatePicker
+                Name="Date"
+                Margin="0,0,0,10"/>
+        </StackPanel>
+        <StackPanel 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Spacing="10">
+            <TextBlock 
+                Text="Выберите дату выписки:"/>
+            <DatePicker
+                Name="Date1"
+                Margin="0,0,0,10"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" 
+                    Orientation="Horizontal">
+            <Button 
+                Click="Insert">Добавить запись</Button>
+            <Button 
+                HorizontalAlignment="Center"
+                Margin="20,0,0,0"
+                Click="LogOut">сменить пользователя</Button>
+            <Button 
+                HorizontalAlignment="Center"
+                Margin="20,0,0,0"
+                Click="openListAppointments">Список назначений доктора</Button>
+        </StackPanel>
+        
+        
+        <ListBox Name="List"
+                 Margin="20"
+                 Height="300">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Illness_record">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock 
+                            Margin="20"
+                            Text="{Binding MedName}"/>
+                        <TextBlock Margin="20" Text="{Binding DiseasesName}"/>
+                        <TextBlock  Margin="20" Text="{Binding RecieptDate}"/>
+                        <TextBlock  Margin="20" Text="{Binding DateOfDischarge}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Window>
